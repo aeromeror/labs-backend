@@ -1,5 +1,7 @@
 package co.edu.unal.software_engineering.labs.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -24,7 +26,7 @@ class UserRole implements Serializable{
      * Constructors
      */
 
-    UserRole( ){
+     public UserRole( ){
         userRolePK = new UserRolePK( );
     }
 
@@ -81,11 +83,12 @@ class UserRole implements Serializable{
         /**
          * Attributes
          */
-
+        @JsonIgnore
         @ManyToOne
         @JoinColumn( name = "user_id", insertable = false, updatable = false )
         private User user;
 
+        @JsonIgnore
         @ManyToOne
         @JoinColumn( name = "role_id", insertable = false, updatable = false )
         private Role role;
@@ -94,7 +97,7 @@ class UserRole implements Serializable{
          * Constructor
          */
 
-        UserRolePK( ){ }
+        public UserRolePK(){ }
 
         public UserRolePK( User user, Role role ){
             this.user = user;

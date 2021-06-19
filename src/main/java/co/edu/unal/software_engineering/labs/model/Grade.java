@@ -1,5 +1,7 @@
 package co.edu.unal.software_engineering.labs.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -29,6 +31,7 @@ public class Grade implements Serializable{
     private Float note;
 
     //bi-directional many-to-one association to Association
+    @JsonIgnore
     @OneToOne
     @JoinColumn( name = "association_id" )
     private Association association;

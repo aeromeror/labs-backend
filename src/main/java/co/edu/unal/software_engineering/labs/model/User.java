@@ -1,5 +1,7 @@
 package co.edu.unal.software_engineering.labs.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
@@ -33,6 +35,7 @@ public class User implements Serializable{
     private String username;
 
     //bi-directional many-to-many association to Role
+    @JsonIgnore
     @ManyToMany( fetch = FetchType.EAGER )
     @JoinTable( name = "user_role", joinColumns = { @JoinColumn( name = "user_id" ) },
             inverseJoinColumns = { @JoinColumn( name = "role_id" ) } )

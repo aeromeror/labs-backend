@@ -53,6 +53,7 @@ public class UserController{
         Role role = roleService.findById( roleId );
         String username = SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
         User existingUser = userService.findByUsername( username );
+        System.out.println(existingUser.getUsername());
         if( role == null || existingUser.hasRole( role ) ){
             return new ResponseEntity<>( HttpStatus.BAD_REQUEST );
         }else if( !passwordEncoder.matches( pojo.getPassword( ), existingUser.getPassword( ) ) ){

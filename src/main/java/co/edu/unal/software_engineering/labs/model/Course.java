@@ -1,5 +1,7 @@
 package co.edu.unal.software_engineering.labs.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
@@ -32,6 +34,7 @@ public class Course implements Serializable{
     private Integer durationHours;
 
     //bi-directional many-to-one association to Association
+    @JsonIgnore
     @OneToMany( mappedBy = "course" )
     private List<Association> associations;
 

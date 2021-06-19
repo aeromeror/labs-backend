@@ -1,6 +1,8 @@
 package co.edu.unal.software_engineering.labs.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
@@ -30,6 +32,7 @@ public class Period implements Serializable{
     private String periodName;
 
     //bi-directional many-to-one association to Association
+    @JsonIgnore
     @OneToMany( mappedBy = "period" )
     private List<Association> associations;
 

@@ -1,5 +1,7 @@
 package co.edu.unal.software_engineering.labs.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -36,6 +38,7 @@ public class Association implements Serializable{
     private Period period;
 
     //bi-directional many-to-one association to UserRole
+    @JsonIgnore
     @ManyToOne
     @JoinColumn( name = "role_id", referencedColumnName = "role_id" )
     @JoinColumn( name = "user_id", referencedColumnName = "user_id" )

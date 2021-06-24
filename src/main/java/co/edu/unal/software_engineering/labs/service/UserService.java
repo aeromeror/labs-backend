@@ -1,8 +1,11 @@
 package co.edu.unal.software_engineering.labs.service;
 
+import co.edu.unal.software_engineering.labs.model.Role;
 import co.edu.unal.software_engineering.labs.model.User;
+import co.edu.unal.software_engineering.labs.model.UserRole;
 import co.edu.unal.software_engineering.labs.pojo.RegisterUserPOJO;
 import co.edu.unal.software_engineering.labs.repository.UserRepository;
+import co.edu.unal.software_engineering.labs.repository.UserRoleRepository;
 import org.springframework.stereotype.Service;
 
 
@@ -10,9 +13,11 @@ import org.springframework.stereotype.Service;
 public class UserService{
 
     private final UserRepository userRepository;
+    private final UserRoleRepository userRoleRepository;
 
-    public UserService( UserRepository userRepository ){
+    public UserService( UserRepository userRepository , UserRoleRepository userRoleRepository){
         this.userRepository = userRepository;
+        this.userRoleRepository=userRoleRepository;
     }
 
 
@@ -22,6 +27,13 @@ public class UserService{
 
     public void save( User user ){
         userRepository.save( user );
+    }
+    public void saveUserRole(User user, Role role){
+        //UserRole.UserRolePK urpk=new UserRole.UserRolePK(user,role);
+        UserRole us=new UserRole();
+        us.setUser(user);
+        us.setRole(role);
+        userRoleRepository.save(us);
     }
 
     public boolean isRightUser( RegisterUserPOJO user ){

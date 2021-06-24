@@ -31,9 +31,6 @@ public class AssociationController {
     public List<Association> getCoursesByUser(){
         String username = SecurityContextHolder.getContext( ).getAuthentication( ).getName( );
         User user = userService.findByUsername( username );
-        /*if( !passwordEncoder.matches( pojo.getPassword( ), user.getPassword( ) ) ){
-            return new ResponseEntity<>( HttpStatus.UNAUTHORIZED );
-        }*/
         List<Association> associations = associationService.getAssociationsByUser( user );
         return associations;
         /*List<EnrolledCoursePOJO> enrolledCourses = new ArrayList<>( );

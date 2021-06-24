@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 @Entity
 @Table( name = "user_role", schema = "public" )
-class UserRole implements Serializable{
+public class UserRole implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
@@ -38,7 +38,7 @@ class UserRole implements Serializable{
         return userRolePK.getUser( );
     }
 
-    void setUser( User user ){
+    public void setUser( User user ){
         userRolePK.setUser( user );
     }
 
@@ -46,7 +46,7 @@ class UserRole implements Serializable{
         return userRolePK.getRole( );
     }
 
-    void setRole( Role role ){
+    public void setRole( Role role ){
         userRolePK.setRole( role );
     }
 
@@ -76,7 +76,7 @@ class UserRole implements Serializable{
      */
 
     @Embeddable
-    private static class UserRolePK implements Serializable{
+    public static class UserRolePK implements Serializable{
 
         private static final long serialVersionUID = 1L;
 
@@ -99,7 +99,7 @@ class UserRole implements Serializable{
 
         public UserRolePK(){ }
 
-        public UserRolePK( User user, Role role ){
+        UserRolePK( User user, Role role ){
             this.user = user;
             this.role = role;
         }
